@@ -1,4 +1,4 @@
-# Citrius light
+# Citrus light
 
 ES2015 module for shining spotlight on UI element.
 
