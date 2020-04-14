@@ -1,4 +1,4 @@
-import { citruslight } from 'http://localhost:5000/citruslight.js'
+import { citruslight, clearAll } from 'http://localhost:5000/citruslight.js'
 
 (() => {
   const h1 = document.getElementById('h1')
@@ -20,4 +20,5 @@ import { citruslight } from 'http://localhost:5000/citruslight.js'
       dismissOverlay = citruslight(el, { eventHandlers })
     })
   }
+  window.clearAll = clearAll
 })()

@@ -3,6 +3,8 @@ const BORDERWIDTH = 10000
 const ANIMATION_DURATION = 500
 const Z_INDEX = 99999
 
+export const citruslightHandlerSet = new Set()
+
 function createOverlay({ center, width, height } = {}, { eventHandlers = [] } = {}){
 
   // create the elment
@@ -43,7 +45,11 @@ function createOverlay({ center, width, height } = {}, { eventHandlers = [] } = 
     overlay.addEventListener(name, handler)
   }
 
-  return () => {
+  const cb = () => {
+    // remove self from citruslightHandlers
+
+    citruslightHandlerSet.delete(cb)
+
     // initiate animation
     overlay.style.opacity = 0
 
@@ -59,6 +65,9 @@ function createOverlay({ center, width, height } = {}, { eventHandlers = [] } = 
       document.body.style.overflow = null
     }, ANIMATION_DURATION)
   }
+
+  citruslightHandlerSet.add(cb)
+  return cb
 }
 
 export function citruslight(el, { center: suppliedCenter, width: suppliedWidth, height: suppliedHeight, eventHandlers } = {}){
@@ -89,4 +98,8 @@ export function citruslight(el, { center: suppliedCenter, width: suppliedWidth, 
       eventHandlers
     })
   }
+}
+
+export function clearAll(){
+  Array.from(citruslightHandlerSet).forEach(cb => cb())
 }
