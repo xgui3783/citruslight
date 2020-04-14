@@ -9,15 +9,14 @@ function createOverlay({ center, width, height } = {}, { eventHandlers = [] } = 
   const overlay = document.createElement('div')
 
   // set style param
-  overlay.style.width = `2px`
-  overlay.style.height = `2px`
+  overlay.style.padding = `1px`
   overlay.style.borderWidth = `${BORDERWIDTH}px`
   overlay.style.borderColor = `rgba(0, 0, 0, 0.5)`
   overlay.style.borderStyle = `solid`
 
   overlay.style.position = `absolute`
   overlay.style.top = `0`
-  overlay.style.bottom = `0`
+  overlay.style.left = `0`
   overlay.style.zIndex = Z_INDEX
 
   // to animate

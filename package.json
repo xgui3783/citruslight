@@ -3,9 +3,7 @@
   "version": "0.0.1",
   "description": "ES2015 module for putting UI element in a limelight.",
   "main": "citruslight.js",
-  "scripts": {
-    
-  },
+  "scripts": {},
   "keywords": [
     "spotlight",
     "limelight",
@@ -16,6 +14,7 @@
   "author": "Xiao Gui <xgui3783@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.1"
   }
 }

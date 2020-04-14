@@ -1,7 +1,9 @@
 const express = require('express')
+const cors = require('cors')
+
 const app = express()
 
-app.use(express.static(__dirname))
+app.use(cors(), express.static(__dirname))
 
 const port = process.env.PORT || '5000'
 
