@@ -12,5 +12,10 @@
     "UI"
   ],
   "author": "Xiao Gui <xgui3783@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "files": [
+    "README.md",
+    "LICENSE",
+    "citruslight.js"
+  ]
 }
