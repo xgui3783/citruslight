@@ -5,7 +5,13 @@ const Z_INDEX = 99999
 
 export const citruslightHandlerSet = new Set()
 
-function createOverlay({ center, width, height } = {}, { eventHandlers = [] } = {}){
+/**
+ * 
+ * @param {Options} options 
+ * @param {*} param1 
+ * @returns 
+ */
+function createOverlay({ center, width, height, inverted } = {}, { eventHandlers = [] } = {}){
 
   // create the elment
   const overlay = document.createElement('div')
@@ -13,7 +19,7 @@ function createOverlay({ center, width, height } = {}, { eventHandlers = [] } = 
   // set style param
   overlay.style.padding = `1px`
   overlay.style.borderWidth = `${BORDERWIDTH}px`
-  overlay.style.borderColor = `rgba(0, 0, 0, 0.5)`
+  overlay.style.borderColor = inverted ? `rgba(128, 128, 128, 0.5)` : `rgba(0, 0, 0, 0.5)`
   overlay.style.borderStyle = `solid`
 
   overlay.style.position = `absolute`
@@ -70,7 +76,20 @@ function createOverlay({ center, width, height } = {}, { eventHandlers = [] } = 
   return cb
 }
 
-export function citruslight(el, { center: suppliedCenter, width: suppliedWidth, height: suppliedHeight, eventHandlers } = {}){
+/**
+ * 
+ * @typedef {Object} Options
+ * @property {number} center
+ * @property {number} width
+ * @property {number} height
+ * @property {boolean} inverted
+ * @property {*} eventHandlers
+ * 
+ * @param {HTMLElement} el 
+ * @param {Options} param1 
+ * @returns {() => void}
+ */
+export function citruslight(el, { center: suppliedCenter, width: suppliedWidth, height: suppliedHeight, eventHandlers, inverted } = {}){
 
   if (suppliedCenter) {
     if (!suppliedWidth) throw new Error(`If center is defined, width must also be defined`)
@@ -79,6 +98,7 @@ export function citruslight(el, { center: suppliedCenter, width: suppliedWidth, 
       center: suppliedCenter,
       width: suppliedWidth,
       height: suppliedHeight,
+      inverted,
     }, {
       eventHandlers
     })
@@ -94,6 +114,7 @@ export function citruslight(el, { center: suppliedCenter, width: suppliedWidth, 
       center: suppliedCenter || center,
       width: suppliedWidth || boundingClientWidth,
       height: suppliedHeight || boundingClientHeight,
+      inverted,
     }, {
       eventHandlers
     })

@@ -39,6 +39,19 @@ import { citruslight } from 'citruslight'
 <!-- truncated for brevity -->
 ```
 
+### In console
+
+To use/import in console/non module script:
+
+```js
+import('https://cdn.jsdelivr.net/npm/citruslight@latest/citruslight.js').then(m => {
+  const { citruslight } = m
+  
+  const el = document.getElementById('important-element')
+  const dismissCb = citruslight(el)
+})
+```
+
 ### Dismiss on click
 
 ```js
@@ -102,6 +115,13 @@ import { citruslight } from 'citruslight'
     height: 50,  // px
   })
 })()
+```
+
+## Develop
+
+```sh
+$ git clone https://github.com/xgui3783/citruslight.git && cd citruslight
+$ npx http-server
 ```
 
 ## License
